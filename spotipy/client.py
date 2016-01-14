@@ -542,6 +542,15 @@ class Spotify(object):
         tlist = [self._get_id('track', t) for t in tracks]
         return self._put('me/tracks/?ids=' + ','.join(tlist))
 
+    def current_user_saved_albums_add(self, albums=[]):
+        ''' Add one or more albums to the current user's
+            "Your Music" library.
+
+            Parameters:
+                - albums - a list of track URIs, URLs or IDs
+        '''
+        alist = [self._get_id('album', a) for a in albums]
+        return self._put('me/albums/?ids=' + ','.join(alist))
 
     def featured_playlists(self, locale=None, country=None,
             timestamp=None, limit=20, offset = 0):
